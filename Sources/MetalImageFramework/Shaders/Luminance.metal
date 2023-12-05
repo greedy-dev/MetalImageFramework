@@ -6,7 +6,7 @@
 //
 
 #include <metal_stdlib>
-#include "ShaderTypes.h"
+#include "ShaderTypes.hpp"
 using namespace metal;
 
 fragment half4 luminanceFragment(SingleInputVertexIO fragmentInput [[stage_in]],

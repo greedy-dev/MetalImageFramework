@@ -6,7 +6,7 @@
 //
 
 #include <metal_stdlib>
-#include "ShaderTypes.h"
+#include "ShaderTypes.hpp"
 using namespace metal;
 
 fragment half4 invertColorFragment(SingleInputVertexIO fragmentInput [[stage_in]],

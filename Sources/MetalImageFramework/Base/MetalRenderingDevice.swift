@@ -33,12 +33,15 @@ public class MetalRenderingDevice {
         self.commandQueue = queue
         
         do {
-            let frameworkBundle = Bundle(for: MetalRenderingDevice.self)
-            let execPath = ProcessInfo.processInfo.arguments.first!
-            let execURL = URL(fileURLWithPath: execPath)
-            let execRootURL = execURL.deletingLastPathComponent()
-            let libraryURL = execRootURL.appendingPathComponent("MetalImageFramework_MetalImageFramework.bundle/default.metallib")
-            self.shaderLibrary = try device.makeLibrary(URL: libraryURL)
+            #if SWIFT_PACKAGE
+            let bundleUrl = Bundle.module.bundleURL
+            let libUrl = bundleUrl.appending(component: "default.metallib")
+            self.shaderLibrary = try device.makeLibrary(URL: libUrl)
+            #else
+            let bundleUrl = Bundle(for: MetalRenderingDevice.self).bundleURL
+            let libUrl = bundleUrl.appending(component: "default.metallib")
+            self.shaderLibrary = try device.makeLibrary(URL: libUrl)
+            #endif
         } catch {
             fatalError("Could not load library")
         }
