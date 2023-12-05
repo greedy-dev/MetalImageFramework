@@ -87,7 +87,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = "Sources/**/*.{swift,h,m,metal}"
 
-  # spec.public_header_files = "Classes/**/*.h"
+  # spec.public_header_files = "Sources/**/*.h"
   
   spec.swift_versions = [5.9]
 
