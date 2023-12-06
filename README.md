@@ -39,22 +39,6 @@ func applyFilter(_ filter: BasicShaderOperation) {
 }
 ```
 
-### Chaining multiple filters
-You can use `OperationGroup` to chain filters
-### Sample code
-```swift
-let luminance = LuminanceAdjustment()
-let contrast = ContrastAdjustment()
-contrast.contrast = 2.0
-
-let group = OperationGroup()
-
-group.configureGroup{ input, output in
-    input => self.boxBlur => self.contrast => output
-}
-```
-
-
 ### Writing custom filters
 To write a custom filter, you can subclass `BasicShaderOperation` (or directly instantiate it).
 You need to supply a fragment shader and number of inputs to it.
